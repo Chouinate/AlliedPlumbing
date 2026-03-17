@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <!-- Dark background gradient -->
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#1a2332"/>
+    </linearGradient>
+    <!-- Pipe metal gradient -->
+    <linearGradient id="pipe" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6b7280"/>
+      <stop offset="40%" stop-color="#9ca3af"/>
+      <stop offset="100%" stop-color="#4b5563"/>
+    </linearGradient>
+    <!-- Pipe end cap gradient -->
+    <linearGradient id="pipeEnd" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4b5563"/>
+      <stop offset="50%" stop-color="#9ca3af"/>
+      <stop offset="100%" stop-color="#4b5563"/>
+    </linearGradient>
+    <!-- Water gradient -->
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#93c5fd"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <!-- Glow filter for water -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <!-- Rust/burst spot gradient -->
+    <radialGradient id="burst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="60%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </radialGradient>
+    <clipPath id="card-clip">
+      <rect width="400" height="300" rx="12"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#card-clip)">
+    <!-- Background -->
+    <rect width="400" height="300" fill="url(#bg)"/>
+
+    <!-- Subtle floor reflection -->
+    <ellipse cx="200" cy="270" rx="180" ry="20" fill="#1d3a6e" opacity="0.4"/>
+
+    <!-- === HORIZONTAL PIPE (left section) === -->
+    <!-- Pipe body left -->
+    <rect x="20" y="128" width="148" height="44" rx="4" fill="url(#pipe)"/>
+    <!-- Pipe highlight -->
+    <rect x="20" y="132" width="148" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
+    <!-- Pipe shadow bottom -->
+    <rect x="20" y="160" width="148" height="6" rx="2" fill="rgba(0,0,0,0.3)"/>
+
+    <!-- === BURST SECTION (centre) === -->
+    <!-- Rust/damage ring -->
+    <ellipse cx="196" cy="150" rx="26" ry="26" fill="url(#burst)" opacity="0.9"/>
+    <!-- Crack lines -->
+    <line x1="185" y1="138" x2="192" y2="148" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <line x1="205" y1="140" x2="199" y2="150" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+    <line x1="182" y1="154" x2="191" y2="152" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/>
+    <!-- Burst hole -->
+    <ellipse cx="196" cy="150" rx="10" ry="8" fill="#0d1117"/>
+
+    <!-- === HORIZONTAL PIPE (right section) === -->
+    <rect x="232" y="128" width="148" height="44" rx="4" fill="url(#pipe)"/>
+    <rect x="232" y="132" width="148" height="8" rx="2" fill="rgba(255,255,255,0.15)"/>
+    <rect x="232" y="160" width="148" height="6" rx="2" fill="rgba(0,0,0,0.3)"/>
+
+    <!-- === WATER GUSH — main stream === -->
+    <!-- Wide upward spout -->
+    <ellipse cx="196" cy="120" rx="14" ry="5" fill="#93c5fd" opacity="0.9" filter="url(#glow)"/>
+    <path d="M183,120 Q188,70 196,40 Q204,70 209,120 Z" fill="url(#water)" opacity="0.85" filter="url(#glow)"/>
+    <!-- Inner highlight on gush -->
+    <path d="M192,118 Q195,80 196,50 Q197,80 200,118 Z" fill="rgba(255,255,255,0.35)"/>
+
+    <!-- Smaller side sprays -->
+    <path d="M186,142 Q170,110 155,85" stroke="#93c5fd" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7" filter="url(#glow)"/>
+    <path d="M206,142 Q222,110 238,88" stroke="#93c5fd" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7" filter="url(#glow)"/>
+    <path d="M183,148 Q160,138 138,128" stroke="#93c5fd" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M209,148 Q232,138 254,128" stroke="#93c5fd" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- Fine droplets -->
+    <circle cx="165" cy="80" r="2.5" fill="#93c5fd" opacity="0.8"/>
+    <circle cx="172" cy="62" r="1.8" fill="#60a5fa" opacity="0.7"/>
+    <circle cx="225" cy="78" r="2.5" fill="#93c5fd" opacity="0.8"/>
+    <circle cx="217" cy="60" r="1.8" fill="#60a5fa" opacity="0.7"/>
+    <circle cx="196" cy="28" r="3" fill="#bfdbfe" opacity="0.9"/>
+    <circle cx="188" cy="22" r="1.5" fill="#93c5fd" opacity="0.6"/>
+    <circle cx="204" cy="18" r="2" fill="#93c5fd" opacity="0.6"/>
+    <circle cx="178" cy="48" r="2" fill="#60a5fa" opacity="0.6"/>
+    <circle cx="214" cy="45" r="2" fill="#60a5fa" opacity="0.6"/>
+
+    <!-- === WATER POOLING on floor === -->
+    <ellipse cx="196" cy="258" rx="90" ry="14" fill="#1e40af" opacity="0.5"/>
+    <ellipse cx="196" cy="254" rx="70" ry="10" fill="#2563eb" opacity="0.35"/>
+    <!-- Ripple rings -->
+    <ellipse cx="196" cy="256" rx="30" ry="5" fill="none" stroke="#93c5fd" stroke-width="1" opacity="0.4"/>
+    <ellipse cx="196" cy="256" rx="50" ry="8" fill="none" stroke="#93c5fd" stroke-width="0.8" opacity="0.25"/>
+
+    <!-- Falling water stream from burst hole to floor -->
+    <path d="M192,158 Q190,210 188,252" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M200,158 Q202,210 204,252" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+    <path d="M196,158 L196,252" stroke="#93c5fd" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+
+    <!-- === PIPE END CAPS === -->
+    <rect x="14" y="124" width="14" height="52" rx="3" fill="url(#pipeEnd)"/>
+    <rect x="372" y="124" width="14" height="52" rx="3" fill="url(#pipeEnd)"/>
+
+    <!-- === WALL BRACKET (optional detail) === -->
+    <rect x="90" y="122" width="8" height="56" rx="2" fill="#374151"/>
+    <rect x="87" y="118" width="14" height="8" rx="2" fill="#4b5563"/>
+    <rect x="87" y="174" width="14" height="8" rx="2" fill="#4b5563"/>
+    <rect x="298" y="122" width="8" height="56" rx="2" fill="#374151"/>
+    <rect x="295" y="118" width="14" height="8" rx="2" fill="#4b5563"/>
+    <rect x="295" y="174" width="14" height="8" rx="2" fill="#4b5563"/>
+
+    <!-- === ALERT BADGE === -->
+    <rect x="16" y="16" width="104" height="34" rx="8" fill="rgba(220,38,38,0.15)" stroke="rgba(220,38,38,0.5)" stroke-width="1"/>
+    <text x="68" y="28" text-anchor="middle" fill="#f87171" font-family="system-ui,sans-serif" font-size="10" font-weight="700" letter-spacing="0.08em">⚠ BURST PIPE</text>
+    <text x="68" y="42" text-anchor="middle" fill="#fca5a5" font-family="system-ui,sans-serif" font-size="9" opacity="0.8">EMERGENCY</text>
+  </g>
+</svg>
