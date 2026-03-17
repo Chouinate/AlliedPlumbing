@@ -57,7 +57,7 @@ sections.forEach(section => observer.observe(section));
 
 // ── Scroll-reveal animation ──────────────────────────────────────────────────
 const revealEls = document.querySelectorAll(
-  '.service-card, .why-card, .testimonial-card, .about__image-wrap, .about__content, .contact__info, .contact__form'
+  '.service-card, .why-card, .testimonial-card, .about__image-wrap, .about__content'
 );
 
 const revealObserver = new IntersectionObserver(entries => {
