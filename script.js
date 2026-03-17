@@ -131,15 +131,24 @@ contactForm.addEventListener('submit', e => {
   }, 1000);
 });
 
+// ── Service pre-select helper ────────────────────────────────────────────────
+function scrollToContactWithService(service) {
+  const contact = document.getElementById('contact');
+  const top = contact.getBoundingClientRect().top + window.scrollY - 68;
+  window.scrollTo({ top, behavior: 'smooth' });
+  // Set after scroll starts so no other handler can overwrite it
+  setTimeout(() => {
+    const select = document.getElementById('service');
+    if (select) select.value = service;
+  }, 50);
+}
+
 // ── Service cards → pre-select contact form dropdown ────────────────────────
 document.querySelectorAll('.service-card[data-service]').forEach(card => {
   card.addEventListener('click', e => {
     e.preventDefault();
-    const select  = document.getElementById('service');
-    const contact = document.getElementById('contact');
-    if (select) select.value = card.dataset.service;
-    const top = contact.getBoundingClientRect().top + window.scrollY - 68;
-    window.scrollTo({ top, behavior: 'smooth' });
+    e.stopPropagation();
+    scrollToContactWithService(card.dataset.service);
   });
 });
 
@@ -147,13 +156,7 @@ document.querySelectorAll('.service-card[data-service]').forEach(card => {
 document.querySelectorAll('.footer__service-link').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const service = link.dataset.service;
-    const select  = document.getElementById('service');
-    const contact = document.getElementById('contact');
-    if (select) select.value = service;
-    const offset = 68;
-    const top = contact.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+    scrollToContactWithService(link.dataset.service);
   });
 });
 
