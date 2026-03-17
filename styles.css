@@ -943,7 +943,9 @@ ul { list-style: none; }
 
   /* Hero */
   .hero__title { font-size: 2.4rem; }
+  .hero__subtitle { font-size: 1rem; }
   .hero__stats { gap: 1.5rem; }
+  .hero__stat-number { font-size: 1.6rem; }
 
   /* About */
   .about__inner {
@@ -952,11 +954,15 @@ ul { list-style: none; }
   }
 
   .about__image-wrap { max-width: 480px; margin: 0 auto; }
+  .about__image-placeholder { font-size: 4rem; }
 
   .about__experience-badge {
     bottom: -1rem;
     right: -0.5rem;
+    padding: 1rem 1.25rem;
   }
+
+  .about__experience-number { font-size: 2rem; }
 
   /* Contact */
   .contact__inner {
@@ -964,10 +970,12 @@ ul { list-style: none; }
     gap: 2.5rem;
   }
 
+  .contact__form { padding: 2rem; }
   .form__row { grid-template-columns: 1fr; }
 
   /* CTA */
   .cta-banner__inner { flex-direction: column; text-align: center; }
+  .cta-banner__title { font-size: 1.6rem; }
 
   /* Footer */
   .footer__inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -975,12 +983,47 @@ ul { list-style: none; }
 }
 
 @media (max-width: 480px) {
-  .hero__actions { flex-direction: column; }
+  .section { padding: 3rem 0; }
+  .container { padding: 0 1rem; }
+
+  /* Hero */
+  .hero { padding: 6rem 0 3rem; }
+  .hero__title { font-size: 2rem; }
+  .hero__subtitle { font-size: .95rem; margin-bottom: 2rem; }
+  .hero__badge { font-size: .75rem; padding: .35rem .85rem; }
+  .hero__actions { flex-direction: column; gap: .75rem; margin-bottom: 2.5rem; }
   .hero__actions .btn { width: 100%; justify-content: center; }
+  .hero__stats { gap: 1.25rem; }
+  .hero__stat-number { font-size: 1.4rem; }
+
+  /* About */
+  .about__image-placeholder { font-size: 3rem; }
+  .about__experience-badge {
+    position: static;
+    margin-top: 1.5rem;
+    display: inline-flex;
+    gap: .75rem;
+    align-items: center;
+    border-radius: var(--radius-md);
+    padding: .75rem 1.25rem;
+  }
+  .about__experience-number { font-size: 1.6rem; }
+
+  /* Services */
   .services__grid { grid-template-columns: 1fr; }
+  .service-card { padding: 1.5rem; }
+
+  /* Why us / testimonials */
   .why-us__grid { grid-template-columns: 1fr; }
   .testimonials__grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .contact__form { padding: 1.25rem; }
+  .form__group input,
+  .form__group select,
+  .form__group textarea { font-size: 1rem; padding: .7rem .9rem; }
+
+  /* Footer */
   .footer__inner { grid-template-columns: 1fr; }
-  .footer__bottom .container { flex-direction: column; text-align: center; }
-  .contact__form { padding: 1.5rem; }
+  .footer__bottom .container { flex-direction: column; text-align: center; gap: .5rem; }
 }
