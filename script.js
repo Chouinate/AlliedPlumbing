@@ -61,18 +61,18 @@ const revealEls = document.querySelectorAll(
 );
 
 const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('revealed');
-      revealObserver.unobserve(entry.target);
-    }
+  const visible = entries.filter(e => e.isIntersecting);
+  visible.forEach((entry, i) => {
+    entry.target.style.transitionDelay = `${i * 0.04}s`;
+    entry.target.classList.add('revealed');
+    revealObserver.unobserve(entry.target);
   });
 }, { threshold: 0.1 });
 
-revealEls.forEach((el, i) => {
+revealEls.forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
-  el.style.transition = `opacity 0.35s ease ${i * 0.04}s, transform 0.35s ease ${i * 0.04}s`;
+  el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
   revealObserver.observe(el);
 });
 
