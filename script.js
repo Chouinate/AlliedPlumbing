@@ -133,17 +133,14 @@ contactForm.addEventListener('submit', e => {
 
 // ── Service cards → pre-select contact form dropdown ────────────────────────
 document.querySelectorAll('.service-card[data-service]').forEach(card => {
-  const activate = () => {
-    const service = card.dataset.service;
+  card.addEventListener('click', e => {
+    e.preventDefault();
     const select  = document.getElementById('service');
     const contact = document.getElementById('contact');
-    if (select) select.value = service;
-    const offset = 68;
-    const top = contact.getBoundingClientRect().top + window.scrollY - offset;
+    if (select) select.value = card.dataset.service;
+    const top = contact.getBoundingClientRect().top + window.scrollY - 68;
     window.scrollTo({ top, behavior: 'smooth' });
-  };
-  card.addEventListener('click', activate);
-  card.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); } });
+  });
 });
 
 // ── Footer service links → pre-select contact form dropdown ─────────────────

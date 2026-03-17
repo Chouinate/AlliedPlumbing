@@ -362,6 +362,9 @@ ul { list-style: none; }
 
 .service-card {
   position: relative;
+  display: block;
+  text-decoration: none;
+  color: inherit;
   background: var(--clr-bg-card);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
