@@ -131,6 +131,20 @@ contactForm.addEventListener('submit', e => {
   }, 1000);
 });
 
+// ── Footer service links → pre-select contact form dropdown ─────────────────
+document.querySelectorAll('.footer__service-link').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const service = link.dataset.service;
+    const select  = document.getElementById('service');
+    const contact = document.getElementById('contact');
+    if (select) select.value = service;
+    const offset = 68;
+    const top = contact.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
+
 // ── Smooth anchor scroll (fallback for older browsers) ───────────────────────
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', e => {
