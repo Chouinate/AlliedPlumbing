@@ -62,12 +62,25 @@ const revealEls = document.querySelectorAll(
 
 const revealObserver = new IntersectionObserver(entries => {
   const visible = entries.filter(e => e.isIntersecting);
-  visible.forEach((entry, i) => {
-    entry.target.style.transitionDelay = `${i * 0.04}s`;
-    entry.target.classList.add('revealed');
-    revealObserver.unobserve(entry.target);
+  if (!visible.length) return;
+
+  // Group by column (x position) so top-left & bottom-left share the same delay
+  const colMap = new Map();
+  visible.forEach(entry => {
+    const x = Math.round(entry.target.getBoundingClientRect().left / 50) * 50;
+    if (!colMap.has(x)) colMap.set(x, []);
+    colMap.get(x).push(entry);
   });
-}, { threshold: 0.1 });
+
+  const cols = [...colMap.keys()].sort((a, b) => a - b);
+  cols.forEach((x, i) => {
+    colMap.get(x).forEach(entry => {
+      entry.target.style.transitionDelay = `${i * 0.08}s`;
+      entry.target.classList.add('revealed');
+      revealObserver.unobserve(entry.target);
+    });
+  });
+}, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
 revealEls.forEach(el => {
   el.style.opacity = '0';
